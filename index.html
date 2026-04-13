@@ -418,36 +418,48 @@
     </div>
   </div>
 
-<audio id="bg-music" autoplay loop muted>
-  <source src="https://upload.fvckers.my.id/jt1jee.mpeg" type="audio/mpeg">
+<audio id="bg-music" loop>
+  <source src="https://api.deline.web.id/agsHNw9Yf3.mp3" type="audio/mpeg">
 </audio>
 
   <!-- small optional: console greetings (just for fun) -->
-  <script>
-    // biar lebih hidup, optional interaksi ringan
-    console.log("FVCKERS | Linktree — Modern web solutions, APIs, digital tools");
-const music = document.getElementById("bg-music");
+<script>
+  const music = document.getElementById("bg-music");
 
-  document.addEventListener("DOMContentLoaded", () => {
-    music.play().catch(() => {});
-  });
+  music.loop = true;
+  music.volume = 0.2;
 
-  function startMusic() {
-    music.muted = false;
-    music.volume = 0;
+  async function startMusic() {
+    try {
+      music.muted = false;
 
-    let fade = setInterval(() => {
-      if (music.volume < 0.2) {
-        music.volume += 0.02;
-      } else {
-        clearInterval(fade);
-      }
-    }, 200);
+      await music.play(); // <- INI PENTING (re-trigger)
+
+      // fade in
+      music.volume = 0;
+      let fade = setInterval(() => {
+        if (music.volume < 0.2) {
+          music.volume += 0.02;
+        } else {
+          clearInterval(fade);
+        }
+      }, 120);
+
+    } catch (err) {
+      console.log("Play gagal, nunggu gesture lagi...");
+    }
   }
 
-  // trigger sekali aja
+  // wajib user gesture
   document.addEventListener("click", startMusic, { once: true });
   document.addEventListener("touchstart", startMusic, { once: true });
-  </script>
+
+  // backup kalau browser masih mau ngelawak
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      music.play().catch(() => {});
+    }, 500);
+  });
+</script>
 </body>
 </html>

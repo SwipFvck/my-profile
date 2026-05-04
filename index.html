@@ -327,7 +327,7 @@
 </head>
 <body>
   <div class="linkcard">
-    <!-- bagian atas: mirip XAI header -->
+    <!-- bagian atas: mirip FVCKERS header -->
     <div class="brand"><div class="avatar-wrap">
   <img src="https://upload.fvckers.my.id/ibjgmy.jpeg" alt="FVCKERS Avatar" class="avatar">
 </div>
@@ -351,7 +351,7 @@
     </div>
 
     <div class="link-list">
-      <!-- XAI Api's -->
+      <!-- FVCKERS Api's -->
       <a href="https://api.fvckers.my.id" class="link-btn" target="_blank">
         <div class="link-left">
           <i class="fas fa-cloud-arrow-up"></i>
@@ -387,7 +387,7 @@
         <i class="fas fa-arrow-right arrow-icon"></i>
       </a>
       
-      <!-- TikTok -->
+      <!-- YouTube -->
       <a href="https://youtube.com/@swipernothem" class="link-btn" target="_blank">
         <div class="link-left">
           <i class="fab fa-youtube"></i>
@@ -406,8 +406,63 @@
         <i class="fas fa-share-alt"></i> S O S I A L
       </div>
       <div class="social-icons">
-        <a href="#" class="social-icon" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#" class="social-icon" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+        <a href="https://tiktok.com/@swiper.hengsam" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://twitter.com/@swiper" class="social-icon" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://instagram.com/@swiperr____" class="social-icon" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+
+    <!-- footer copyright -->
+    <div class="footer">
+      <p>© 2026 FVCKERS Community. All rights reserved.</p>
+    </div>
+  </div>
+
+<audio id="bg-music" loop>
+  <source src="https://api.deline.web.id/agsHNw9Yf3.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- small optional: console greetings (just for fun) -->
+<script>
+  const music = document.getElementById("bg-music");
+
+  music.loop = true;
+  music.volume = 0.2;
+
+  async function startMusic() {
+    try {
+      music.muted = false;
+
+      await music.play(); // <- INI PENTING (re-trigger)
+
+      // fade in
+      music.volume = 0;
+      let fade = setInterval(() => {
+        if (music.volume < 0.2) {
+          music.volume += 0.02;
+        } else {
+          clearInterval(fade);
+        }
+      }, 120);
+
+    } catch (err) {
+      console.log("Play gagal, nunggu gesture lagi...");
+    }
+  }
+
+  // wajib user gesture
+  document.addEventListener("click", startMusic, { once: true });
+  document.addEventListener("touchstart", startMusic, { once: true });
+
+  // backup kalau browser masih mau ngelawak
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      music.play().catch(() => {});
+    }, 500);
+  });
+</script>
+</body>
+</html>rd</a>
         <a href="#" class="social-icon" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       </div>
     </div>
